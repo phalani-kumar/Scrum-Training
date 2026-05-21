@@ -1,22 +1,19 @@
-// function EmployeeSearch({
-//   search,
-//   setSearch
-// }) {
+// function SearchBar({ search, setSearch }) {
 
 //   return (
 //     <input
 //       type="text"
-//       placeholder="Search Employee..."
+//       placeholder="Search Users..."
 //       value={search}
 //       onChange={(e) => setSearch(e.target.value)}
-//       className="search-box"
+//       className="search"
 //     />
 //   );
 // }
 
-// export default EmployeeSearch;
+// export default SearchBar;
 
-function EmployeeSearch({
+function SearchBar({
   search,
   setSearch
 }) {
@@ -24,18 +21,14 @@ function EmployeeSearch({
   return (
     <input
       type="text"
-
-      placeholder="Search Employee"
-
+      placeholder="Search Users..."
       value={search}
-
       onChange={(e) =>
         setSearch(e.target.value)
       }
-
       className="search-box"
     />
   );
 }
 
-export default EmployeeSearch;
+export default SearchBar;

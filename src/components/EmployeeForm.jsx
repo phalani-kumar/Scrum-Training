@@ -1,30 +1,124 @@
+// import { useEffect, useState } from "react";
+
+// function EmployeeForm({
+//   addEmployee,
+//   updateEmployee,
+//   editEmployee
+// }) {
+
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: ""
+//   });
+
+//   useEffect(() => {
+
+//     if (editEmployee) {
+
+//       setFormData(editEmployee);
+//     }
+
+//   }, [editEmployee]);
+
+//   const handleChange = (e) => {
+
+//     setFormData({
+//       ...formData,
+//       [e.target.name]: e.target.value
+//     });
+//   };
+
+//   const handleSubmit = (e) => {
+
+//     e.preventDefault();
+
+//     if (editEmployee) {
+
+//       updateEmployee(formData);
+
+//     } else {
+
+//       addEmployee(formData);
+//     }
+
+//     setFormData({
+//       name: "",
+//       email: ""
+//     });
+//   };
+
+//   return (
+//     <form
+//       className="employee-form"
+//       onSubmit={handleSubmit}
+//     >
+
+//       <input
+//         type="text"
+//         name="name"
+//         placeholder="Employee Name"
+//         value={formData.name}
+//         onChange={handleChange}
+//         required
+//       />
+
+//       <input
+//         type="email"
+//         name="email"
+//         placeholder="Employee Email"
+//         value={formData.email}
+//         onChange={handleChange}
+//         required
+//       />
+
+//       <button type="submit">
+//         {editEmployee
+//           ? "Update Employee"
+//           : "Add Employee"}
+//       </button>
+
+//     </form>
+//   );
+// }
+
+// export default EmployeeForm;
+
+import { useEffect, useState } from "react";
+
 import { useEffect, useState } from "react";
 
 function EmployeeForm({
   addEmployee,
   updateEmployee,
-  editEmployee
+  editingEmployee
 }) {
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: ""
-  });
+  const [formData, setFormData]
+    = useState({
+
+      fullname: "",
+      email: "",
+      company: "",
+      website: ""
+    });
 
   useEffect(() => {
 
-    if (editEmployee) {
+    if (editingEmployee) {
 
-      setFormData(editEmployee);
+      setFormData(editingEmployee);
     }
 
-  }, [editEmployee]);
+  }, [editingEmployee]);
 
   const handleChange = (e) => {
 
     setFormData({
+
       ...formData,
-      [e.target.name]: e.target.value
+
+      [e.target.name]:
+        e.target.value
     });
   };
 
@@ -32,7 +126,7 @@ function EmployeeForm({
 
     e.preventDefault();
 
-    if (editEmployee) {
+    if (editingEmployee) {
 
       updateEmployee(formData);
 
@@ -42,8 +136,11 @@ function EmployeeForm({
     }
 
     setFormData({
-      name: "",
-      email: ""
+
+      fullname: "",
+      email: "",
+      company: "",
+      website: ""
     });
   };
 
@@ -55,9 +152,9 @@ function EmployeeForm({
 
       <input
         type="text"
-        name="name"
-        placeholder="Employee Name"
-        value={formData.name}
+        name="fullname"
+        placeholder="Full Name"
+        value={formData.fullname}
         onChange={handleChange}
         required
       />
@@ -65,16 +162,34 @@ function EmployeeForm({
       <input
         type="email"
         name="email"
-        placeholder="Employee Email"
+        placeholder="Email"
         value={formData.email}
         onChange={handleChange}
         required
       />
 
+      <input
+        type="text"
+        name="company"
+        placeholder="Company"
+        value={formData.company}
+        onChange={handleChange}
+      />
+
+      <input
+        type="text"
+        name="website"
+        placeholder="Website"
+        value={formData.website}
+        onChange={handleChange}
+      />
+
       <button type="submit">
-        {editEmployee
+
+        {editingEmployee
           ? "Update Employee"
           : "Add Employee"}
+
       </button>
 
     </form>
